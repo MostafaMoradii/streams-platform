@@ -68,6 +68,7 @@ class WriteEntityModel
         $extends    = $prefix . $suffix . 'EntryModel';
         $namespace  = $this->addon->getTransformedClass("{$entity}");
         $interface  = $this->addon->getTransformedClass("{$entity}\\Contract\\{$entity}Interface");
+        $repository_interface  = $this->addon->getTransformedClass("{$entity}\\Contract\\{$entity}RepositoryInterface");
         $base       = "Anomaly\\Streams\\Platform\\Model\\{$prefix}\\{$prefix}{$suffix}EntryModel";
 
         $path = $this->addon->getPath("src/{$entity}/{$entity}Model.php");
@@ -80,7 +81,7 @@ class WriteEntityModel
 
         $filesystem->put(
             $path,
-            $parser->parse($template, compact('class', 'extends', 'implements', 'namespace', 'interface', 'base', 'factory'))
+            $parser->parse($template, compact('class', 'extends', 'implements', 'namespace', 'interface', 'base', 'factory','repository_interface','entity'))
         );
     }
 }

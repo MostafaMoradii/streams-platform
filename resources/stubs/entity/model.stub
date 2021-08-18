@@ -1,6 +1,7 @@
 <?php namespace {namespace};
 
 use {interface};
+use {repository_interface};
 use {base};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,5 +15,10 @@ class {class} extends {extends} implements {implements}
     protected static function newFactory()
     {
         return {factory}::new();
+    }
+
+    public function getRepository()
+    {
+        return get_class(app({entity}RepositoryInterface::class));
     }
 }
